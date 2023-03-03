@@ -1,4 +1,3 @@
-#FROM debian:stretch 
 FROM raspbian/stretch
 
 WORKDIR /app       

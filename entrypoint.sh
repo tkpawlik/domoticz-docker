@@ -20,9 +20,10 @@ cp /data/* /tmpfs/
 ln -sf /tmpfs/domoticz.db-shm /app/
 ln -sf /tmpfs/domoticz.db-wal /app/
 ln -sf /tmpfs/domoticz.db /app/
+ln -sf /tmpfs/domocookie.txt /app
 ln -sf /tmpfs/zwcfg_0xdbec9d62.xml /app/Config/
 ln -sf /tmpfs/zwscene.xml /app/Config/
-ln -sf /tmpfs/domocookie.txt /app
+ln -sf /tmpfs/OZW_Log.txt /app/Config/OZW_Log.txt
 
 /app/domoticz > /dev/null 2>&1 &
 
