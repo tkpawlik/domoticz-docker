@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker stop domoticz
 docker rm -f domoticz
 docker run --name domoticz \
   --tmpfs /tmpfs \
@@ -12,5 +13,6 @@ docker run --name domoticz \
   -e TZ=Europe/Warsaw \
   -p 8080:8080 \
   -d \
-  domoticz:1.1.0
+  domoticz:1.2.0
 docker ps | grep domoticz
+docker logs domoticz

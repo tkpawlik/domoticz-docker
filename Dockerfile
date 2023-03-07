@@ -3,19 +3,18 @@ FROM raspbian/stretch
 WORKDIR /app       
 
 RUN apt-get update
-RUN apt-get -y install sqlite avrdude procps wiringpi
+RUN apt-get -y install sqlite wiringpi
 
 RUN apt-get -y install libusb-dev libcurl4-openssl-dev libpython3-dev
 COPY libssl1.0.0_1.0.1t-1+deb8u7_armhf.deb .
 COPY domoticz_linux_armv7l.tgz .
 RUN dpkg -i libssl1.0.0_1.0.1t-1+deb8u7_armhf.deb 
 RUN tar -zxf domoticz_linux_armv7l.tgz
-RUN chmod +x domoticz.sh   
 
-COPY plugins plugins   
+COPY plugins plugins
 
 COPY dht22.bin .
 
 COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
-CMD ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
