@@ -2,6 +2,8 @@
 
 cp /data/zwcfg_0xdbec9d62.xml /tmpfs/
 ln -sf /tmpfs/zwcfg_0xdbec9d62.xml /app/Config/
+ln -sf /tmpfs/OZW_Log.txt /app/Config/OZW_Log.txt
+ln -sf /tmpfs/zwscene.xml /app/Config/
 
 gpio export 4 in
 echo both > /sys/class/gpio/gpio4/edge
