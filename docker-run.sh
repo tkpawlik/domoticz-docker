@@ -13,6 +13,6 @@ docker run --name domoticz \
   -e TZ=Europe/Warsaw \
   -p 8080:8080 \
   -d \
-  domoticz:1.2.0
+  domoticz:1.3.0
 docker ps | grep domoticz
 docker logs domoticz

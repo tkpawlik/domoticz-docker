@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cp /data/zwcfg_0xdbec9d62.xml /tmpfs/
+ln -sf /tmpfs/zwcfg_0xdbec9d62.xml /app/Config/
+
 gpio export 4 in
 echo both > /sys/class/gpio/gpio4/edge
 

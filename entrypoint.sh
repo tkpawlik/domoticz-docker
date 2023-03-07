@@ -6,14 +6,8 @@ cleanup() {
   mv /data/domoticz.db /data/tmp/
   cp /tmpfs/domoticz.db /data/
 
-  mv /data/zwcfg_0xdbec9d62.xml /data/tmp/
-  cp /tmpfs/zwcfg_0xdbec9d62.xml /data/
-
-  mv /data/zwscene.xml /data/tmp/
-  cp /tmpfs/zwscene.xml /data/
-
-  mv /data/domocookie.txt /data/tmp/
-  cp /tmpfs/domocookie.txt /data/
+  chmod +x /data/on-shutdown.sh
+  /data/on-shutdown.sh
 
   rm -rf /data/tmp
 }
@@ -22,27 +16,32 @@ trap 'cleanup' SIGTERM
 
 mkdir -p /tmpfs
 
-ln -sf /tmpfs/domoticz.db-shm /app/
-ln -sf /tmpfs/domoticz.db-wal /app/
-ln -sf /tmpfs/OZW_Log.txt /app/Config/OZW_Log.txt
-
 cp /data/domoticz.db /tmpfs/
 ln -sf /tmpfs/domoticz.db /app/
 
-cp /data/zwcfg_0xdbec9d62.xml /tmpfs/
-ln -sf /tmpfs/zwcfg_0xdbec9d62.xml /app/Config/
+#mkdir /tmpfs/BatteryLevel
+#ln -sf /tmpfs/BatteryLevel /app/plugins/BatteryLevel/__pycache__
 
-cp /data/zwscene.xml /tmpfs/
+#mkdir /tmpfs/python
+#ln -sf /tmpfs/python /usr/lib/python3.5/__pycache__
+
+#mkdir /tmpfs/python-collections
+#ln -sf /tmpfs/python-collections /usr/lib/python3.5/collections/__pycache__
+
+#mkdir /tmpfs/python-plat-arm-linux-gnueabihf
+#ln -sf /tmpfs/python-plat-arm-linux-gnueabihf /usr/lib/python3.5/plat-arm-linux-gnueabihf/__pycache__
+
+#mv /app/www/images /tmpfs/images
+#ln -sf /tmpfs/images /app/www/image
+
+ln -sf /tmpfs/domoticz.db-shm /app/
+ln -sf /tmpfs/domoticz.db-wal /app/
+ln -sf /tmpfs/domocookie.txt /app
+ln -sf /tmpfs/OZW_Log.txt /app/Config/OZW_Log.txt
 ln -sf /tmpfs/zwscene.xml /app/Config/
 
-cp /data/domocookie.txt /tmpfs/
-ln -sf /tmpfs/domocookie.txt /app
-
-mkdir /tmpfs/BatteryLevel
-ln -sf /tmpfs/BatteryLevel /app/plugins/BatteryLevel/__pycache__
-
-chmod +x /data/gpio.sh
-/data/gpio.sh
+chmod +x /data/on-startup.sh
+/data/on-startup.sh
 
 /app/domoticz > /dev/null 2>&1 &
 
