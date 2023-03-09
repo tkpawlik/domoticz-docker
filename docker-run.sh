@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source domoticz.properties
 docker stop domoticz
 docker rm -f domoticz
 docker run --name domoticz \
@@ -13,6 +14,6 @@ docker run --name domoticz \
   -e TZ=Europe/Warsaw \
   -p 8080:8080 \
   -d \
-  domoticz:1.4.0
+  domoticz:$version
 docker ps | grep domoticz
 docker logs domoticz
