@@ -3,7 +3,7 @@
 # ./docker-build-amd64.sh /home/tkpawlik/Dropbox/repository
 
 REPOSITORY=$1
-VERSION=1.6.0
+VERSION=1.7.0
 
 cp $REPOSITORY/domoticz_linux_armv7l.tgz ./
 cp $REPOSITORY/libssl1.0.0_1.0.1t-1+deb8u7_armhf.deb ./

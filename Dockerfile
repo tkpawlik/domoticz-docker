@@ -1,4 +1,4 @@
-FROM raspbian/stretch:041518
+FROM debian:stretch-slim
 
 WORKDIR /app
 
