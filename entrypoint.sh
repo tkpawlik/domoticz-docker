@@ -25,6 +25,10 @@ ln -sf /tmpfs/domocookie.txt /app
 chmod +x /data/on-startup.sh
 /data/on-startup.sh
 
-/app/domoticz > /dev/null 2>&1 &
+if [ -n "$LOG_PATH" ]; then
+  /app/domoticz "$LOG_PATH"
+else
+  /app/domoticz > /dev/null 2>&1 &
+fi
 
 wait $!

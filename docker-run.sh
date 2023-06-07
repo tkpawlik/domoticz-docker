@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=$1
+VERSION=1.10.0
 
 docker stop domoticz
 docker rm -f domoticz

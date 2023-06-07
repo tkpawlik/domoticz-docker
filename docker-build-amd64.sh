@@ -3,7 +3,7 @@
 # ./docker-build-amd64.sh /home/tkpawlik/Dropbox/repository
 
 REPOSITORY=$1
-VERSION=1.9.0
+VERSION=1.10.0
 
 mkdir tmp
 cp $REPOSITORY/domoticz_linux_armv7l.tgz tmp/
